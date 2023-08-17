@@ -27,8 +27,8 @@
 	"portsAttributes": {
 		"5000": {
 			"label": "Application",
-                        // Other options below: notify, openBrowser, ignore
-			"onAutoForward": "openPreview" 
+                        // Other options below: notify, openPreview, ignore
+			"onAutoForward": "openBrowser" 
 		}
 	},
 
