@@ -3,12 +3,16 @@ from tensorflow import keras
 from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 import pickle
+import os
 
-model = load_model('./models/model.keras')
-# tokenized_review = model.transform()
+# Download model.keras from Google Drive
+os.system('gdown 1NMIiYh5tiqvg5oBl9lIj_z2MvK9VdLB1')
 
-# tokenizer = Tokenizer()
-with open('./models/tokenizer.pickle', 'rb') as handle:
+# Download tokenizer.pickle from Google Drive
+os.system('gdown 1-2sorE2PLDsGFwOl6KNtqJ8UDb6U1CmS')
+
+model = load_model('model.keras')
+with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 def pred(good_user_input):
