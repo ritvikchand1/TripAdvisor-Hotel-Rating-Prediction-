@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ritvik Peter Web App</title>
+    </head>
+    <body>
+        <textarea type="text" id="input"></textarea>
+        <button id="submit">submit</button>
+        <p id="output"></p>
+
+        <script>
+            document.getElementById("submit").addEventListener("click", async function(){
+                const response = await (await fetch("/submit_input_text", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        text: document.getElementById('input').value
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                })).text();
+                console.log(response);
+                document.getElementById('output').innerHTML = response;
+            })
+        </script>
+    </body>
+</html>

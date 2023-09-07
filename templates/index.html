@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
         <title>Ritvik Peter Web App</title>
-    </head>
-    <body>
-        <textarea type="text" id="input"></textarea>
-        <button id="submit">submit</button>
-        <p id="output"></p>
+        <style>
+            body {
+                text-align: center;
+            }
+            button {
+                background-color: lightslategray;
+                color:white;
+            }
+        </style>
+</head>
+<body>
+    <h1>Trip Advisor Hotel Rating</h1>
+    <form method="post">
+        <textarea name="review-content" placeholder="Enter a positive review: " rows="15" cols="35">{{ text }}</textarea>
+        <div>
+            <button>Submit Review</button>
+            <a href="/">Reset</a>
+        </div>
+    </form>
+    <h2>{{ text }} </h2>
 
-        <script>
-            document.getElementById("submit").addEventListener("click", async function(){
-                const response = await (await fetch("/submit_input_text", {
-                    method: "POST",
-                    body: JSON.stringify({
-                        text: document.getElementById('input').value
-                    }),
-                    headers: {
-                        "Content-type": "application/json; charset=UTF-8"
-                    }
-                })).text();
-                console.log(response);
-                document.getElementById('output').innerHTML = response;
-            })
-        </script>
-    </body>
+    <h2>{{ rating }}</h2>
+</body>
 </html>
