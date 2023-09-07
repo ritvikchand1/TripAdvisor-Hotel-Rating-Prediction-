@@ -2,19 +2,21 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
+import pickle
 
 model = load_model('./models/model.keras')
 # tokenized_review = model.transform()
 
-tokenizer = Tokenizer()
+# tokenizer = Tokenizer()
+with open('./models/tokenizer.pickle', 'rb') as handle:
+    tokenizer = pickle.load(handle)
 
 def pred(good_user_input):
     # good_reviews = [input("Enter a positive hotel review --> ")]  #user inputs both a good and bad review
     # bad_reviews = [input("Enter a negative hotel review --> ")]
 
-    encoded_good_reviews = tokenizer.texts_to_matrix(good_user_input, mode='binary')
+    encoded_good_reviews = tokenizer.texts_to_matrix([good_user_input], mode='binary')
     predicted_good_ratings = model.predict(encoded_good_reviews)    #user inputed good review is encoded as binary matrix
-
     # encoded_bad_reviews = tokenizer.texts_to_matrix(bad_reviews, mode='binary')   #user inputed bad review is encoded as binary matrix
     # predicted_bad_ratings = model.predict(encoded_bad_reviews)
 
