@@ -3,11 +3,11 @@ import ml
 
 app = Flask(__name__)
 
-@app.route("/")
-def render_home():
-   return render_template("index.html")
+# @app.route("/")
+# def render_home():
+#    return render_template("index.html")
 
-@app.route("/predict", methods = ["GET", "POST"])
+@app.route("/", methods = ["GET", "POST"])
 def predict():
     if request.method == "POST": 
         print(request.method)
