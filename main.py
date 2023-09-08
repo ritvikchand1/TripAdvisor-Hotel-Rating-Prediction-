@@ -3,6 +3,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.models import load_model
 import pickle
+import os
 
 app = Flask(__name__)
 
@@ -52,8 +53,11 @@ def pred(good_user_input):
     # print("bad review prediction: ",predicted_bad_rating , "stars")
 
 if __name__ == "__main__":
+    os.system('gdown 1NMIiYh5tiqvg5oBl9lIj_z2MvK9VdLB1')
+    os.system('gdown 1-2sorE2PLDsGFwOl6KNtqJ8UDb6U1CmS')
+
     model = load_model('model.keras')
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
-        
-    app.run(host='0.0.0.0', port = 8080, debug=True)
+
+    app.run(host='0.0.0.0', port = 8080, debug=False)
